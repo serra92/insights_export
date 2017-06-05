@@ -1,11 +1,11 @@
 module InsightsExport
   class ExportModels
-    @ignore = []
+    $ignore = []
     def self.ignore(ignore_list)
-      @ignore = []
+      $ignore = []
       split = ignore_list.gsub(/\s+/m, ' ').strip.split(" ")
       split.each do |to_ignore|
-        @ignore << to_ignore
+        $ignore << to_ignore
       end
     end
 
@@ -64,7 +64,7 @@ module InsightsExport
 
       models.map do |model|
         begin
-          next if @ignore_list.include? model.name
+          next if $ignore.include? model.name
           columns_hash = model.columns_hash
         rescue
           next
