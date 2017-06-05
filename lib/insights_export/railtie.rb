@@ -10,6 +10,7 @@ module InsightsExport
         desc 'Set exporter to ignore models'
         task :ignore, :ignore_list do |_t, args|
           # Rails.application.eager_load!
+          byebug
           InsightsExport::ExportModels.ignore(args[:ignore_list])
         end
       end
