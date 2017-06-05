@@ -1,11 +1,11 @@
 module InsightsExport
-  self.ignore = []
   class ExportModels
+    @ignore = []
     def self.ignore(ignore_list)
-      InsightsExport.ignore = []
+      @ignore = []
       split = ignore_list.gsub(/\s+/m, ' ').strip.split(" ")
       split.each do |to_ignore|
-        InsightsExport.ignore << to_ignore
+        @ignore << to_ignore
       end
     end
 
