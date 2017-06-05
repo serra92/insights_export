@@ -100,6 +100,7 @@ module InsightsExport
             outgoing: {}
           }
         }
+        byebug
 
         model.reflections.each do |association_name, reflection|
           if reflection.macro == :belongs_to
@@ -134,4 +135,3 @@ module InsightsExport
     end
   end
 end
-
