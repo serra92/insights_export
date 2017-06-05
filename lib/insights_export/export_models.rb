@@ -1,5 +1,14 @@
 module InsightsExport
+  @ignore = []
   class ExportModels
+
+    def self.ignore(ignore_list)
+      split = ignore_list.gsub(/\s+/m, ' ').strip.split(" ")
+      split.each do |to_ignore|
+        @ignore << to_ignore
+      end
+    end
+
     def self.config_file
       "#{Rails.root}/config/insights.yml"
     end
@@ -55,6 +64,7 @@ module InsightsExport
 
       models.map do |model|
         begin
+          next if @ignore_list.include? model.name
           columns_hash = model.columns_hash
         rescue
           next
