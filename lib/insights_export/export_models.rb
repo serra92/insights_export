@@ -100,14 +100,13 @@ module InsightsExport
             outgoing: {}
           }
         }
-        byebug
 
         model.reflections.each do |association_name, reflection|
           if reflection.macro == :belongs_to
             # reflection.class_name # User
             # reflection.foreign_key # user_id
             # reflection.association_primary_key # id
-
+            byebug if model.name == "Attachment"
             model_structure[:columns].delete(reflection.foreign_key.to_sym)
             model_structure[:links][:outgoing][association_name] = {
               model: reflection.class_name,
